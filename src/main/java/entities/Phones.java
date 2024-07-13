@@ -7,6 +7,7 @@ public class Phones extends BaseEntity{
     private String phone_number;
     private boolean blocked;
     private boolean free;
+
     private String communication_type;
     public Phones(Long id, String phone_number, boolean blocked, boolean free, String communication_type) {
         this.phone_number = phone_number;
