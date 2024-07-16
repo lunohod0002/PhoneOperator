@@ -7,6 +7,7 @@ import java.util.List;
 @Entity @Table(name = "contract")
 public class Contract extends BaseEntity {
     private String date;
+
     private Subscriber subscriber;
     private Phones phones;
     private Tariffs tarrif;

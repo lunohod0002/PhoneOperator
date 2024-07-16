@@ -1,16 +1,26 @@
 package entities;
 
-import java.util.Set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+import java.util.Set;
+@Entity @Table(name = "services")
 public class Services extends BaseEntity {
     private String name;
     private int price;
     private String description;
+    Set<ServiceContract> serviceContractSet;
 
-    public Services(String name, int price, String description) {
+    public Services(String name, int price, String description, Set<ServiceContract> serviceContractSet) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.serviceContractSet = serviceContractSet;
+    }
+
+    public Services() {
+
     }
 
     public String getName() {
@@ -35,5 +45,14 @@ public class Services extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    @OneToMany(mappedBy = "service_contract")
+
+    public Set<ServiceContract> getServiceContractSet() {
+        return serviceContractSet;
+    }
+
+    public void setServiceContractSet(Set<ServiceContract> serviceContractSet) {
+        this.serviceContractSet = serviceContractSet;
     }
 }
