@@ -1,11 +1,14 @@
-//package com.example.phoneoperator.repositories;
-//
-//import com.example.phoneoperator.domain.Phones;
-//import org.springframework.data.jpa.repository.JpaRepository;
-//
-//import java.util.List;
-//
-//public interface PhoneRepository extends JpaRepository<Phones, Long> {
-//    Phones findPhonesByPhoneNumber(String phone_number);
-//    List<Phones> findAllPhoneNumbers();
-//}
+package com.example.phoneoperator.repositories;
+
+import com.example.phoneoperator.domain.Phone;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+@Repository
+public interface PhoneRepository{
+    Phone findPhoneByPhoneNumber(String phone_number);
+    List<Phone> findAllPhoneNumbers();
+}
