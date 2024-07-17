@@ -1,22 +1,24 @@
-package entities;
+package com.example.phoneoperator.domain;
 
 import jakarta.persistence.*;
 
-@Entity @Table(name = "phones")
-public class Phones extends BaseEntity{
+@Entity
+@Table(name = "phones")
+public class Phone extends BaseEntity {
     private String phoneNumber;
     private boolean blocked;
     private boolean free;
+    @Enumerated(EnumType.STRING)
+    private PhoneTypeEnum telephone_type;
 
-    private String communication_type;
-    public Phones(Long id, String phoneNumber, boolean blocked, boolean free, String communication_type) {
+    public Phone(Long id, String phoneNumber, boolean blocked, boolean free, String owner_type, PhoneTypeEnum telephone_type) {
         this.phoneNumber = phoneNumber;
         this.blocked = blocked;
         this.free = free;
-        this.communication_type = communication_type;
+        this.telephone_type = telephone_type;
     }
 
-    public Phones() {
+    protected Phone() {
 
     }
 
@@ -44,11 +46,11 @@ public class Phones extends BaseEntity{
         this.free = free;
     }
 
-    public String getConnection_type() {
-        return communication_type;
+    public PhoneTypeEnum getTelephone_type() {
+        return telephone_type;
     }
 
-    public void setConnection_type(String connection_type) {
-        this.communication_type = connection_type;
+    public void setTelephone_type(PhoneTypeEnum telephone_type) {
+        this.telephone_type = telephone_type;
     }
 }

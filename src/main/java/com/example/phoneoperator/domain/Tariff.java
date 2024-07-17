@@ -1,25 +1,25 @@
-package entities;
+package com.example.phoneoperator.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity @Table(name = "tarrifs")
-public class Tariffs extends BaseEntity {
+public class Tariff extends BaseEntity {
     private String name;
     private int price;
     private String description;
     private int calls_number;
-    private int internet_number;
+    private int gigabytes_numbers;
 
-    public Tariffs(String name, int price, String description, int calls_number, int internet_number) {
+    public Tariff(String name, int price, String description, int calls_number, int gigabytes_numbers) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.calls_number = calls_number;
-        this.internet_number = internet_number;
+        this.gigabytes_numbers = gigabytes_numbers;
     }
 
-    public Tariffs() {
+    protected Tariff() {
 
     }
 
@@ -55,11 +55,11 @@ public class Tariffs extends BaseEntity {
         this.calls_number = calls_number;
     }
 
-    public int getInternet_number() {
-        return internet_number;
+    public int getGigabytes_numbers() {
+        return gigabytes_numbers;
     }
 
-    public void setInternet_number(int internet_number) {
-        this.internet_number = internet_number;
+    public void setGigabytes_numbers(int gigabytes_numbers) {
+        this.gigabytes_numbers = gigabytes_numbers;
     }
 }

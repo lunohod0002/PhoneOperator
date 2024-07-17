@@ -1,4 +1,4 @@
-package entities;
+package com.example.phoneoperator.domain;
 
 import jakarta.persistence.*;
 
