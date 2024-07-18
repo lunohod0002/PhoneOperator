@@ -8,10 +8,9 @@ public class Phone extends BaseEntity {
     private String phoneNumber;
     private boolean blocked;
     private boolean free;
-    @Enumerated(EnumType.STRING)
     private PhoneTypeEnum telephone_type;
 
-    public Phone(Long id, String phoneNumber, boolean blocked, boolean free, String owner_type, PhoneTypeEnum telephone_type) {
+    public Phone(Long id, String phoneNumber, boolean blocked, boolean free, PhoneTypeEnum telephone_type) {
         this.phoneNumber = phoneNumber;
         this.blocked = blocked;
         this.free = free;
@@ -45,6 +44,7 @@ public class Phone extends BaseEntity {
     public void setFree(boolean free) {
         this.free = free;
     }
+    @Enumerated(EnumType.STRING)
 
     public PhoneTypeEnum getTelephone_type() {
         return telephone_type;

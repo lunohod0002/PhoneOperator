@@ -1,38 +1,39 @@
 package com.example.phoneoperator.repositories.implementations;
 
+import com.example.phoneoperator.Dto.PhoneDto;
+import com.example.phoneoperator.Dto.PhoneOneDto;
 import com.example.phoneoperator.domain.Phone;
+import com.example.phoneoperator.repositories.GenericRepository;
 import com.example.phoneoperator.repositories.PhoneRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
-public class PhoneRepositoryImpl implements PhoneRepository {
-    @Autowired
-    PhoneRepository phoneRepository;
+public class PhoneRepositoryImpl extends GenericRepository<Phone,Long> implements PhoneRepository  {
     @PersistenceContext
     EntityManager entityManager;
-
-    public PhoneRepositoryImpl(PhoneRepository phoneRepository) {
-        this.phoneRepository = phoneRepository;
+    ModelMapper modelMapper = new ModelMapper();
+    public PhoneRepositoryImpl() {
+        super(Phone.class);
     }
 
-    @Transactional
     @Override
-    public Phone findPhoneByPhoneNumber(String phoneNumber) {
-        TypedQuery<Phone> query = entityManager.createQuery("SELECT ph FROM Phone ph WHERE ph.phoneNumber = :phoneNumber", Phone.class);
-        query.setParameter("phoneNumber", phoneNumber);
-        return query.getSingleResult();
+    public Phone findPhoneByPhoneNumber(PhoneOneDto phoneOneDto) {
+        Phone phone = entityManager.createQuery("SELECT ph FROM Phone ph WHERE ph.phoneNumber = :phoneNumber", Phone.class)
+                .setParameter("phoneNumber", phoneOneDto.phoneNumber)
+                .getSingleResult();
+        return phone;
+
     }
 
-    @Transactional
     @Override
     public List<Phone> findAllPhoneNumbers() {
         TypedQuery<Phone> query = entityManager.createQuery("SELECT e FROM Phone e", Phone.class);

@@ -1,14 +1,13 @@
 package com.example.phoneoperator.repositories;
 
+import com.example.phoneoperator.Dto.PhoneDto;
+import com.example.phoneoperator.Dto.PhoneOneDto;
 import com.example.phoneoperator.domain.Phone;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface PhoneRepository{
-    Phone findPhoneByPhoneNumber(String phone_number);
+public interface PhoneRepository {
+    Phone findPhoneByPhoneNumber(PhoneOneDto phoneOneDto);
     List<Phone> findAllPhoneNumbers();
 }

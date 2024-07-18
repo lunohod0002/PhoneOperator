@@ -1,10 +1,15 @@
 package com.example.phoneoperator.repositories;
 
+import com.example.phoneoperator.Dto.PhoneDto;
+import com.example.phoneoperator.Dto.PhoneOneDto;
 import com.example.phoneoperator.domain.Contract;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.phoneoperator.domain.Phone;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-public interface ContractRepository extends JpaRepository<Contract, Long> {
-    List<Contract> updateContractBySubscriberContaining(int age);
+@Repository
+public interface ContractRepository {
+    Contract changePhoneNumberButSaveTariff(String oldPhoneNumber, String newPhoneNumber);
+    List<Contract> findAllWithDateAbove(String date);
+    List<Object[]> getPhoneGigabitesAndMinutesRemain(String phone_number);
 }
