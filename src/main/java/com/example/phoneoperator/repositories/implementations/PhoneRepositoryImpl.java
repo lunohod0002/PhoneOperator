@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class PhoneRepositoryImpl extends GenericRepository<Phone,Long> implements PhoneRepository  {
-    @PersistenceContext
+    @Autowired
     EntityManager entityManager;
     ModelMapper modelMapper = new ModelMapper();
     public PhoneRepositoryImpl() {

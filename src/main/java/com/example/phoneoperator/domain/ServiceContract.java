@@ -9,7 +9,6 @@ public class ServiceContract extends BaseEntity {
     private Subscriber subscriber;
     private Services service;
     private String date;
-    @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
     public ServiceContract(Subscriber subscriber, Services service, String date, StatusEnum status) {
@@ -32,7 +31,7 @@ public class ServiceContract extends BaseEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "service_id")
     public Services getService() {
         return service;
     }
@@ -49,6 +48,7 @@ public class ServiceContract extends BaseEntity {
     public void setDate(String date) {
         this.date = date;
     }
+    @Enumerated(EnumType.STRING)
 
     public StatusEnum getStatus() {
         return status;

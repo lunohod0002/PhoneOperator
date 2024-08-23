@@ -1,4 +1,4 @@
-package com.example.phoneoperator.repositories.implementations;
+package com.example.phoneoperator.Dto;
 
 import com.example.phoneoperator.domain.Services;
 import com.example.phoneoperator.domain.StatusEnum;
@@ -7,8 +7,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 public class ServiceContractDto {
-    public Subscriber subscriber;
-    public Services service;
+    public int subscriber_id;
+    public int service_id;
     public String date;
     public StatusEnum status;
 

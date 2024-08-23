@@ -43,7 +43,7 @@ public class Contract extends BaseEntity {
         this.subscriber = subscriber;
     }
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "phone_id")
     public Phone getPhones() {
         return phones;
@@ -53,7 +53,7 @@ public class Contract extends BaseEntity {
         this.phones = phones;
     }
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "tarrif_id")
     public Tariff getTarrif() {
         return tarrif;

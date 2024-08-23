@@ -23,7 +23,7 @@ public class PhoneServiceImpl  implements PhoneService {
 
     @Override
     public boolean checkIsBlocked() {
-        return false;
+        return true;
     }
 
     @Override
